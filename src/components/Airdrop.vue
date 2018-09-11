@@ -78,7 +78,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .airdrop {
-  margin: 20px 0;
+  margin: 0;
   padding: 20px;
 }
 .airdrop h1 {
