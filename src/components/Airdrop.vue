@@ -69,6 +69,7 @@ export default {
       const { userId } = await coinview.user.profile()
       api.tokenSupply(userId).then(data => {
         this.supply = data.data
+        this.collected = this.supply.NXT.collected && this.supply.ECO.collected
       })
     }
   },

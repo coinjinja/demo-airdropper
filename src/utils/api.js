@@ -1,6 +1,6 @@
 import 'isomorphic-fetch'
 
-const API_ENDPOINT = 'https://dapp-demo.coinjina.com'
+const API_ENDPOINT = 'https://dapp-demo.coinjinja.com'
 
 function tokenSupply(user) {
   const data = { user_id: user }
@@ -52,6 +52,7 @@ function request(url, payload = {}) {
     }
   }
 
+  console.log(API_ENDPOINT, url, method, body)
   return fetch(API_ENDPOINT + url, { method, headers, body, credentials: 'same-origin' })
     .then(parseBody)
     .then(data => ({ data }))
