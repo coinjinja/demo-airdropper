@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import coinview from '@coinjinja/coinview-sdk'
 import { numberFormat } from '../utils'
 import api from '../utils/api'
 
@@ -57,14 +58,16 @@ export default {
   },
   filters: { numberFormat },
   methods: {
-    collect() {
+    async collect() {
       this.collected = true
-      api.collect('user_id').then(data => {
+      const { userId } = await coinview.user.profile()
+      api.collect(userId).then(data => {
         this.collected = data.data.collected
       })
     },
-    tokenSupply() {
-      api.tokenSupply('user_id').then(data => {
+    async tokenSupply() {
+      const { userId } = await coinview.user.profile()
+      api.tokenSupply(userId).then(data => {
         this.supply = data.data
       })
     }

@@ -1,6 +1,6 @@
 import 'isomorphic-fetch'
 
-const API_ENDPOINT = 'https://private-009b40-demoairdrop.apiary-mock.com/'
+const API_ENDPOINT = 'https://dapp-demo.coinjina.com'
 
 function tokenSupply(user) {
   const data = { user_id: user }
