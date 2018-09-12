@@ -52,7 +52,6 @@ function request(url, payload = {}) {
     }
   }
 
-  console.log(API_ENDPOINT, url, method, body)
   return fetch(API_ENDPOINT + url, { method, headers, body, credentials: 'same-origin' })
     .then(parseBody)
     .then(data => ({ data }))
