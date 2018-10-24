@@ -3,22 +3,18 @@
     <img src="../assets/airdrop.png"
       srcset="../assets/airdrop@2x.png 2x,
               ../assets/airdrop@3x.png 3x">
-    <h1>NEC2018 エアドロップ</h1>
+    <h1>ブロックチェーン講義</h1>
     <div class="counter">
       <div class="title">
-        <div>物販用 ECO</div>
-        <div></div>
-        <div>投票用 NXT</div>
+        <div>講義用エアドロップ ETH</div>
       </div>
       <div class="remains">
-        <div>{{supply.ECO.remains | numberFormat}}</div>
         <div>残り</div>
-        <div>{{supply.NXT.remains | numberFormat}}</div>
+        <div>{{supply.ETH.remains | numberFormat(4)}}</div>
       </div>
       <div class="supply">
-        <div>{{supply.ECO.supply | numberFormat}}</div>
         <div>合計</div>
-        <div>{{supply.NXT.supply | numberFormat}}</div>
+        <div>{{supply.ETH.supply | numberFormat(4)}}</div>
       </div>
     </div>
     <div class="actions">
@@ -37,23 +33,18 @@ export default {
   name: 'Airdrop',
   data() {
     const supply = {
-        NXT: {
-            supply: 1050,
-            remains: 1050,
-            collected: false
-        },
-        ECO: {
-            supply: 35000,
-            remains: 35000,
-            collected: false
-        }
+      ETH: {
+        supply: 1.00,
+        remains: 1.00,
+        collected: false
+      },
     }
     const collected = false
     return { supply, collected }
   },
   computed: {
     message() {
-      return !this.collected ? '100 ECO / 3 NXT を受け取る' : '100 ECO / 3 NXT を受け取りました'
+      return !this.collected ? '0.02 ETH を受け取る' : '0.02 ETH を受け取りました'
     }
   },
   filters: { numberFormat },
@@ -69,7 +60,7 @@ export default {
       const { userId } = await coinview.user.profile()
       api.tokenSupply(userId).then(data => {
         this.supply = data.data
-        this.collected = this.supply.NXT.collected && this.supply.ECO.collected
+        this.collected = this.supply.ETH.collected
       })
     }
   },
@@ -114,7 +105,7 @@ export default {
   font-size: 20px;
   font-weight: 600;
 }
-.counter > div > div:nth-child(2) {
+.counter > div > div:nth-child(1) {
   color: #999;
   font-size: 14px;
   font-weight: 400;
