@@ -13,13 +13,6 @@ export default {
   components: {
     Airdrop
   },
-  mounted() {
-    coinview.init('njqNbqXQ').then(() => {
-      console.log('CoinView SDK inited.')
-    }).catch(e => {
-      console.error('Failed to init CoinView SDK', e)
-    })
-  }
 }
 </script>
 

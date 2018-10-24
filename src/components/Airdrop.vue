@@ -53,7 +53,8 @@ export default {
       this.collected = true
       const { userId } = await coinview.user.profile()
       api.collect(userId).then(data => {
-        this.collected = data.data.collected
+        this.supply = data.data
+        this.collected = data.data.ETH.collected
       })
     },
     async tokenSupply() {
@@ -65,7 +66,12 @@ export default {
     }
   },
   mounted() {
-    this.tokenSupply()
+    coinview.init('njqNbqXQ').then(() => {
+      this.tokenSupply()
+      console.log('CoinView SDK inited.')
+    }).catch(e => {
+      console.error('Failed to init CoinView SDK', e)
+    })
   }
 }
 </script>
